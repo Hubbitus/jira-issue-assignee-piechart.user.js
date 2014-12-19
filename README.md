@@ -21,6 +21,8 @@ What it does and how works
 ==========================
 Based on [google visialisation API](https://developers.google.com/chart/) and [Jira REST API](https://docs.atlassian.com/jira/REST/latest/) it should work in almost all versions and sites.
 
+Examples by issue https://jira.atlassian.com/browse/JRA-31917
+
 * Once it installed it automatically add button in dates block: ![add button in dates block](https://raw.githubusercontent.com/Hubbitus/jira-issue-assignee-piechart.user.js/master/screenshots/jira-issue-assignee-piechart.user.js-button.png).
 * By click it retreive full issue changelog and draw chart by each assegment: ![chart by each assegment](https://raw.githubusercontent.com/Hubbitus/jira-issue-assignee-piechart.user.js/master/screenshots/jira-issue-assignee-piechart.user.js-chart.png)
 * and summary time by assignee: ![summary time by assignee chart](https://raw.githubusercontent.com/Hubbitus/jira-issue-assignee-piechart.user.js/master/screenshots/jira-issue-assignee-piechart.user.js-charts.png)
