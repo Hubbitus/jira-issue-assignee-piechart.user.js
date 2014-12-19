@@ -120,12 +120,12 @@ console.log('User.js script start loading');
 					assigneeRanges.push({
 						assignee: res.issues[0].fields.assignee.displayName // Current assignee, no any history
 						,from: new Date(res.issues[0].fields.created) // issue create task
-						,to: new Date(res.issues[0].fields.resolutiondate) || new Date() // resolution date
+						,to: ( res.issues[0].fields.resolutiondate ? new Date(res.issues[0].fields.resolutiondate) : new Date() ) // resolution date
 					});
 				}
 				else{
 					// Last - end by task resolution date
-					jQ(assigneeRanges).get(-1).to = new Date(res.issues[0].fields.resolutiondate) || new Date()
+					jQ(assigneeRanges).get(-1).to = ( res.issues[0].fields.resolutiondate ? new Date(res.issues[0].fields.resolutiondate) : new Date() ) // resolution date
 				}
 
 				jQ.getScript(
