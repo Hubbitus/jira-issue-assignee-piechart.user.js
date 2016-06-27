@@ -194,9 +194,14 @@ console.log('User.js script start loading');
 										jQ(tooltipSelector + ' .google-visualization-tooltip-item').css({padding: '0.2em', margin: '0.2em'})
 									}
 
+									var chartSize = Math.ceil(( jQ('#datesmodule').width() * 0.5 ));
+									var chartStyle = 'height: ' + chartSize + 'px; width: ' + chartSize + 'px; border: 1px solid #ccc; padding: 0 0 2em; margin: 0;';
+
+									var container = jQ('<div id="assignee-piechart" style="display: flex"></div>').appendTo(jQ('#datesmodule')); // Common container for flex layout
+
 									// Chart by all assignments
 									// Bottom padding needed for extended tooltip we are using before
-									var chartFull = new google.visualization.PieChart( (jQ('#assignees_chart_full')[0] || jQ('<div id="assignees_chart_full" style="height: ' + Math.ceil(( jQ('#datesmodule').width() * 1.1 )) + 'px; border: 1px solid #ccc; padding: 0 0 4em; margin: 0;">Loading assignee pie chart full</div>').appendTo(jQ('#datesmodule'))[0]) );
+									var chartFull = new google.visualization.PieChart( (jQ('#assignees_chart_full')[0] || jQ('<div id="assignees_chart_full" style="' + chartStyle + '">Loading assignee pie chart full</div>').appendTo(container)[0]) );
 									// Custom PieChart tooltip based on https://gist.github.com/alexrainman/bb8d49357250df0859c0 ( http://stackoverflow.com/a/27243588/307525 )
 									// https://developers.google.com/chart/interactive/docs/basic_interactivity
 									google.visualization.events.addListener(chartFull, 'onmouseover', function(e){
@@ -209,7 +214,7 @@ console.log('User.js script start loading');
 									chartFull.draw(dataFull, options);
 
 									// Chart by sum spent time on issue by assignee.
-									var chartSum = new google.visualization.PieChart( (jQ('#assignees_chart_sum')[0] || jQ('<div id="assignees_chart_sum" style="height: ' + Math.ceil(( jQ('#datesmodule').width() * 1.1 )) + 'px; border: 1px solid #ccc; padding: 0 0 4em; margin: 0;">Loading assignee pie chart sum</div>').appendTo(jQ('#datesmodule'))[0]) );
+									var chartSum = new google.visualization.PieChart( (jQ('#assignees_chart_sum')[0] || jQ('<div id="assignees_chart_sum" style="' + chartStyle + '">Loading assignee pie chart sum</div>').appendTo(container)[0]) );
 									google.visualization.events.addListener(chartSum, 'onmouseover', function(e){
 //										chartSum.setSelection([e]);
 										chartTooltipFill('#assignees_chart_sum', dataSum.getValue(e.row, 2));
@@ -225,7 +230,7 @@ console.log('User.js script start loading');
 	}
 
 	jQ('#datesmodule').append(
-		jQ('<button>Draw assigners time charts</button>').click(
+		jQ('<button style="border: 2px solid silver; border-radius: 11px; width: 100%;">Draw assigners time charts</button>').click(
 			function(){
 				console.log('Lets draw!');
 				queryJiraDataAndDrawCharts();
