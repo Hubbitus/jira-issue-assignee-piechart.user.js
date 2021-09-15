@@ -1,9 +1,18 @@
 // ==UserScript==
-// @match http://*/browse/*-*
-// @match https://*/browse/*-*
+// @name         jira-issue-assignee-piechart
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Jira user.js browser extension for draw pie chart of JIRA issue assign history. See https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js
+// @author       Pavel Alexeev <Pavel_Alexeev@epam.com>
+// @include      /^https?:\/\/jira\..+?\/browse\/[A-Z0-9]+-\d+$/
+// @updateURL    https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js/raw/master/jira-issue-assignee-piechart.user.js
+// @downloadURL  https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js/raw/master/jira-issue-assignee-piechart.user.js
 // ==/UserScript==
 
+alert('Hi');
+
 function addJQuery(callback) {
+    console.log('[jira-issue-assignee-piechart] addJQuery function start');
 	var script = document.createElement("script");
 	script.setAttribute("src", "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js");
 	script.addEventListener('load', function() {
@@ -16,7 +25,7 @@ function addJQuery(callback) {
 
 // Note, jQ replaces $ to avoid conflicts.
 function main() {
-console.log('User.js script start loading');
+console.log('[jira-issue-assignee-piechart] script start loading');
 	var chartFull, data;
 
 	/**
@@ -24,7 +33,7 @@ console.log('User.js script start loading');
 	*/
 	function queryJiraDataAndDrawCharts(){
 		jQ.get(
-			window.location.origin + '/rest/api/2/search'
+			$('meta[name=ajs-jira-base-url]').attr('content') + '/rest/api/2/search'
 			,{
 				jql: 'key = ' + (jQ('meta[name=ajs-issue-key]').attr('content') /* Single issue */ || jQ('div.navigator-content[data-selected-issue]').data('selected-issue').key /* Search */)
 				,expand: 'changelog'
