@@ -9,10 +9,9 @@
 // @downloadURL  https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js/raw/master/jira-issue-assignee-piechart.user.js
 // ==/UserScript==
 
-alert('Hi');
 
 function addJQuery(callback) {
-    console.log('[jira-issue-assignee-piechart] addJQuery function start');
+	console.log('[jira-issue-assignee-piechart] addJQuery function start');
 	var script = document.createElement("script");
 	script.setAttribute("src", "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js");
 	script.addEventListener('load', function() {
