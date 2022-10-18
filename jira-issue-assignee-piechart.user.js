@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         jira-issue-assignee-piechart
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @description  Jira user.js browser extension for draw pie chart of JIRA issue assign history. See https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js
 // @author       Pavel Alexeev <Pavel_Alexeev@epam.com>
-// @include      /^https?:\/\/jira\..+?\/browse\/[A-Z0-9]+-\d+$/
+// @include      /^https?:\/\/jira.+?\/browse\/[A-Z0-9]+-\d+$/
 // @updateURL    https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js/raw/master/jira-issue-assignee-piechart.user.js
 // @downloadURL  https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js/raw/master/jira-issue-assignee-piechart.user.js
 // ==/UserScript==
@@ -32,7 +32,7 @@ console.log('[jira-issue-assignee-piechart] script start loading');
 	*/
 	function queryJiraDataAndDrawCharts(){
 		jQ.get(
-			$('meta[name=ajs-jira-base-url]').attr('content') + '/rest/api/2/search'
+			jQ('meta[name=ajs-jira-base-url]').attr('content') + '/rest/api/2/search'
 			,{
 				jql: 'key = ' + (jQ('meta[name=ajs-issue-key]').attr('content') /* Single issue */ || jQ('div.navigator-content[data-selected-issue]').data('selected-issue').key /* Search */)
 				,expand: 'changelog'
