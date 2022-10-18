@@ -15,7 +15,7 @@ Other browsers also may support that, but it is not intended and not tested. If 
 
 Installation
 ============
-Just go to [link](https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js/raw/master/jira-issue-assignee-piechart.user.js]). Browser should ask you permission install it.
+Just go to [link](https://github.com/Hubbitus/jira-issue-assignee-piechart.user.js/raw/master/jira-issue-assignee-piechart.user.js). Browser should ask you permission install it.
 
 What it does and how works
 ==========================
